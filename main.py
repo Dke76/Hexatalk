@@ -23,14 +23,14 @@ import re
 import os
 
 bot = Client("bot",
-             bot_token= "6984025218:AAG00eo_USPsOEuUfExdgwPFChrksaQG5FQ",
-             api_id=29509604,
-             api_hash= "7543d780627ea4a25da5fe5696167440")
+             bot_token= "6896159439:AAF4rGF6Zvucgf012qRrLHv_ilAP5Q3nrZY",
+             api_id=20319884,
+             api_hash= "637e3ba6357aa3ba2f3bf5742e0fd066")
 
 
 @bot.on_message(filters.command(["start"]) & filters.user(ADMINS))
 async def account_login(bot: Client, m: Message):
-    editable = await m.reply_text(f"HELLO I AM TXT DOWNLOADER BOT MADE BY Hexa_Talk [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nPress /Hexa")
+    editable = await m.reply_text(f"HELLO I AM TXT DOWNLOADER BOT MADE BY Hexa_Talk [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nPress /Caption")
 
 
 @bot.on_message(filters.command("stop") & filters.user(ADMINS))
@@ -39,13 +39,13 @@ async def restart_handler(_, m):
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on_message(filters.command(["Hexa"]) & filters.user(ADMINS))
+@bot.on_message(filters.command(["Caption"]) & filters.user(ADMINS))
 async def account_login(bot: Client, m: Message):
     editable = await m.reply_text(f"**Hey [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nSend txt file**")
     input: Message = await bot.listen(editable.chat.id)
     if input.document:
         x = await input.download()
-        await bot.send_document(-1002039122754, x)
+        await bot.send_document(-1002102423504, x)
         await input.delete(True)
         file_name, ext = os.path.splitext(os.path.basename(x))
         credit = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
@@ -169,13 +169,13 @@ async def account_login(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:                               
-                cc = f'** {str(count).zfill(3)}.** {name1} ({res}) Hexa_Talk.mkv\n**Batch Name :** {b_name}\n\n**Downloaded by : {CR}**'
-                cc1 = f'** {str(count).zfill(3)}.** {name1} Hexa_Talk.pdf \n**Batch Name :**{b_name}\n\n**Downloaded by : {CR}**'
+                cc = f'** {str(count).zfill(3)}.** {name1} ({res}) Alex.mkv\n**Batch Name :** {b_name}\n\n**Downloaded by : {CR}**'
+                cc1 = f'** {str(count).zfill(3)}.** {name1} Alex.pdf \n**Batch Name :**{b_name}\n\n**Downloaded by : {CR}**'
                 if "drive" in url:
                     try:
                         ka = await helper.download(url, name)
                         copy = await bot.send_document(chat_id=m.chat.id,document=ka, caption=cc1)
-                        await copy.copy(chat_id = -1002039122754)
+                        await copy.copy(chat_id = -1002102423504)
                         count+=1
                         os.remove(ka)
                         time.sleep(1)
@@ -189,7 +189,7 @@ async def account_login(bot: Client, m: Message):
                         download_cmd = f"{cmd} -R 25 --fragment-retries 25"
                         os.system(download_cmd)
                         copy = await bot.send_document(chat_id=m.chat.id,document=f'{name}.pdf', caption=cc1)
-                        await copy.copy(chat_id = -1002039122754)
+                        await copy.copy(chat_id = -1002102423504)
                         count += 1
                         os.remove(f'{name}.pdf')
                     except FloodWait as e:
